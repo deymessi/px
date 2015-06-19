@@ -45,7 +45,7 @@ app.use(app.router);
 app.get('/', routes.index);
 app.get('/users', users.list);
 */
-
+/*
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/challenge', function(error){
        if(error){
@@ -54,13 +54,13 @@ mongoose.connect('mongodb://localhost/challenge', function(error){
           console.log('conexion en mongo!! realizado ');
        }
     });
-
+*/
 //fin conexion a la base de datos
 
 require('./routes/routuser.js')(app);
 
 //rotas administrativas
-require('./routes/admin/routadmin.js')(app);<
+//require('./routes/admin/routadmin.js')(app);
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
