@@ -33,7 +33,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
-app.get('/', routes.index);
+require('./routes/routuser.js')(app);
+//app.get('/', routes.index);
 //app.get('/users', users.list);
 
 /// catch 404 and forwarding to error handler
