@@ -12,7 +12,7 @@ var users = require('./routes/user');
 var app = express();
 
 
-//http.createServer(app).listen(process.env.PORT || 8080);
+http.createServer(app).listen(process.env.PORT || 8080);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
