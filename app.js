@@ -1,11 +1,3 @@
-/*var express = require('express');
-var http = require('http');
-var path = require('path');
-var favicon = require('static-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-*/
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -13,25 +5,17 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var cors=require('cors');
-var  mid=require('./servicios/middleware.js');
+
 var routes = require('./routes');
 var users = require('./routes/user');
 
 var app = express();
 
 
-http.createServer(app).listen(process.env.PORT || 8080);
+http.createServer(app).listen(process.env.PORT || 8080)
 // view engine setup
-app.configure(function(){
-    app.use(express.bodyParser());
-    app.use(express.methodOverride());
-});
-//configuracion de las vistas
 app.set('views', path.join(__dirname, 'views'));
-app.engine("html", require("ejs").renderFile);
-app.set('view engine', 'html');
-
+app.set('view engine', 'jade');
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -41,26 +25,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
-/*
 app.get('/', routes.index);
-app.get('/users', users.list);
-*/
-/*
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/challenge', function(error){
-       if(error){
-          throw error; 
-       }else{
-          console.log('conexion en mongo!! realizado ');
-       }
-    });
-*/
-//fin conexion a la base de datos
+//app.get('/users', users.list);
 
-require('./routes/routuser.js')(app);
-
-//rotas administrativas
-//require('./routes/admin/routadmin.js')(app);
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
