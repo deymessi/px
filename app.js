@@ -33,7 +33,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://deyber:deyber@ds047782.mongolab.com:47782/challenge', function(error){
+       if(error){
+          throw error; 
+       }else{
+          console.log('conexion en mongo!! realizado ');
+       }
+    });
+
 require('./routes/routuser.js')(app);
+require('./routes/admin/routadmin.js')(app);
 //app.get('/', routes.index);
 //app.get('/users', users.list);
 
