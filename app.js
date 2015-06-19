@@ -60,7 +60,7 @@ mongoose.connect('mongodb://localhost/challenge', function(error){
 require('./routes/routuser.js')(app);
 
 //rotas administrativas
-require('./routes/admin/routadmin.js')(app);
+require('./routes/admin/routadmin.js')(app);<
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
