@@ -16,8 +16,14 @@ var app = express();
 
 http.createServer(app).listen(process.env.PORT || 8080)
 // view engine setup
+app.configure(function(){
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+});
+//configuracion de las vistas
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.engine("html", require("ejs").renderFile);
+app.set('view engine', 'html');
 
 app.use(favicon());
 app.use(logger('dev'));
